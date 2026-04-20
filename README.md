@@ -2,21 +2,24 @@
 
 ## Deskripsi
 
-Project ini merupakan aplikasi CRUD (Create, Read, Update, Delete) sederhana untuk sistem pemesanan makanan. Aplikasi ini digunakan untuk mengelola data pesanan seperti nama pelanggan, menu makanan, jumlah pesanan, dan alamat pembeli.
-
+Aplikasi ini merupakan sistem pemesanan makanan berbasis web yang dibangun menggunakan framework Laravel.
+Aplikasi ini memungkinkan pengguna untuk melakukan pengelolaan data pesanan makanan secara lengkap (CRUD) serta menghitung total harga secara otomatis.
 ## Fitur
 
-* Menampilkan daftar pesanan
-* Menambahkan pesanan baru
-* Mengedit data pesanan
-* Menghapus pesanan
+* ✅ Tambah data pesanan makanan
+* ✅ Tampilkan daftar pesanan
+* ✅ Edit data pesanan
+* ✅ Hapus data pesanan
+* ✅ Perhitungan total harga otomatis (harga × jumlah)
+* ✅ Tampilan modern menggunakan Bootstrap
 
 ## Teknologi yang Digunakan
 
-* Laravel
-* PHP
+* PHP 8+
+* Laravel 10
 * MySQL
-* Bootstrap
+* Bootstrap 5
+* Laragon (Local Development)
 
 ## Struktur Data
 
@@ -36,49 +39,105 @@ Sebelum menjalankan project ini, pastikan telah menginstall:
 * Laravel
 * MySQL / MariaDB
 * XAMPP / Laragon
-* git
 
 ## Cara Instalasi
 
-1. Clone repository:
+1. **Clone repository:**
+   bash
    git clone https://github.com/Elisma09/crud-laravel.git
+   cd pemesanan-makanan
 
-2. Masuk ke folder project:
-   cd crud-laravel
+2. **Install Dependency**
+bash
+composer install
 
-3. Install dependency:
-   composer install
+3. **Copy File Environment**
+bash
+cp .env.example .env
 
-4. Copy file environment:
-   cp .env.example .env
+4. **Generate Key**
+bash
+php artisan key:generate
 
-5. Generate application key:
-   php artisan key:generate
+5. **Konfigurasi Database**
+Edit file .env:
 
-6. Atur koneksi database pada file .env:
-   DB_DATABASE=nama_database
-   DB_USERNAME=root
-   DB_PASSWORD=
+env
+DB_DATABASE=db_makanan
+DB_USERNAME=root
+DB_PASSWORD=
 
-7. Jalankan migrasi database:
-   php artisan migrate
+6. **Migrasi Database**
+bash
+php artisan migrate
 
-## Cara Menjalankan Aplikasi
 
-Jalankan server Laravel:
+Jika terjadi error atau ingin reset database:
+
+bash
+php artisan migrate:fresh
+
+7. **Jalankan Aplikasi**
+bash
 php artisan serve
 
+
 Buka di browser:
-http://127.0.0.1:8000
 
-## Tampilan Aplikasi
 
-Aplikasi ini memiliki halaman:
+http://127.0.0.1:8000/pesanan
 
-* Halaman daftar pesanan
-* Halaman tambah pesanan
-* Halaman edit pesanan
+## 🌐 Alternatif (Laragon)
 
-## Author
+Jika menggunakan Laragon:
 
+* Simpan project di folder:
+
+
+C:\laragon\www\
+
+
+* Jalankan Laragon → Start All
+* Akses melalui:
+
+
+http://pemesanan-makanan.test/pesanan
+
+
+## 🧮 Cara Kerja Perhitungan
+
+Total harga dihitung secara otomatis dengan rumus:
+
+
+Total = Harga × Jumlah
+
+
+Perhitungan dilakukan:
+
+* Di *frontend (JavaScript)* → untuk tampilan real-time
+* Di *backend (Laravel Controller)* → untuk menjaga keamanan data
+
+
+
+## 📁 Struktur Folder Penting
+
+
+app/
+ ├── Models/
+ │   └── Pesanan.php
+ ├── Http/
+ │   └── Controllers/
+ │       └── PesananController.php
+
+resources/
+ └── views/
+     └── pesanan/
+         ├── index.blade.php
+         ├── create.blade.php
+         └── edit.blade.php
+
+
+---
+
+## 👨‍💻 Author
 Nama: Elsimawati Berutu
